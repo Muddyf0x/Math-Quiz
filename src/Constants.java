@@ -1,3 +1,4 @@
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -6,7 +7,7 @@ public class Constants {
     public static final Boolean DEBUG = false;
     public static final int CALCULATIONS_PER_GAME = 2;
     public static final int THRESHOLD = 75;
-    public static final String INPUT_SOURCE = "System.in";
+    public static final InputStream INPUT_SOURCE = System.in;
     public static final String[] POSITIVE_COMMENTS = {
             "Well done, keep it up!",
             "Excellent, you're on the right track!",
