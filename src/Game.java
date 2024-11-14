@@ -1,7 +1,16 @@
 import java.util.Random;
 
+/// The Game class manages the main logic of a math-based game, including handling user input for
+/// difficulty and operation type, running rounds of arithmetic questions, and providing feedback
+/// based on the player’s performance.
+/// The Game class interacts with the Input class for validated user input, and uses the Operations
+/// class to perform arithmetic operations. The game repeats until the player chooses to exit.
 public class Game {
-
+    /**
+     * Starts the game loop, which continues until the player opts to exit.
+     * Each loop iteration represents a complete game round, where the user sets the difficulty
+     * and chooses an operation type. Feedback is provided based on the player's performance.
+     */
     public void start() {
         while (true) {
             int difficulty = getDifficulty();
@@ -20,7 +29,12 @@ public class Game {
         }
         Input.closeScanner();
     }
-
+    /**
+     * Prompts the user to select a difficulty level. If an invalid value is provided, the prompt
+     * is repeated until a valid choice is made. The user can enter -1 to exit the game.
+     *
+     * @return The difficulty level chosen by the player (1-5) or -1 to exit.
+     */
     private static int getDifficulty() {
         System.out.print("NOTE: All operations use Integer arithmetic.\n" +
                 "Enter the difficulty level (from 1-5) or -1 to exit: ");
@@ -34,21 +48,32 @@ public class Game {
             System.out.print("Enter the difficulty level (from 1-5) or -1 to exit: ");
         }
     }
-
+    /**
+     * Prompts the user to select an operation type, displaying the available options.
+     * If an invalid option is provided, the prompt is repeated until a valid choice is made.
+     *
+     * @return The operation type chosen by the player (0 = mixed operations, 1-4 for specific operations).
+     */
     private static int getOperationType() {
         System.out.println("Choose the operation type to practice:");
         for (int i = 0; i < Operations.OPERATION_TEXT.length; i++) {
             System.out.println(Operations.OPERATION_TEXT[i]);
         }
-        System.out.print("Enter the operation (0-" + Operations.OPERATION_TEXT.length + "): ");
+        System.out.print("Enter the operation (0-" + (Operations.OPERATION_TEXT.length - 1) + "): ");
         while (true) {
             int operationType = Input.getIntegerIn();
             if (operationType >= 0 && operationType < Operations.OPERATION_TEXT.length)
                 return operationType;
-            System.out.print("Enter the operation (0-" + Operations.OPERATION_TEXT.length + "): ");
+            System.out.print("Enter the operation (0-" + (Operations.OPERATION_TEXT.length - 1) + "): ");
         }
     }
-
+    /**
+     * Runs a single round of questions based on the selected difficulty and operation type.
+     *
+     * @param difficulty   The difficulty level chosen by the player, affecting the range of numbers used.
+     * @param operationType The operation type chosen by the player (0 for mixed, or a specific operation).
+     * @return True if the question was answered correctly on the first try
+     */
     private static boolean playRound(int difficulty, int operationType) {
         int a = RandomUtils.getRandomNumberWithNDigits(difficulty);
         int b = RandomUtils.getRandomNumberWithNDigits(difficulty);
@@ -83,7 +108,12 @@ public class Game {
         } while (true);
 
     }
-
+    /**
+     * Provides feedback to the user based on the number of correct answers.
+     * Displays the user’s score as a percentage, and suggests improvements if necessary.
+     *
+     * @param correctAnswers The count of questions answered correctly in the round.
+     */
     private static void giveFeedback(int correctAnswers) {
         int percent = (int) (correctAnswers * 100 / (long) Constants.CALCULATIONS_PER_GAME);
         System.out.println("You Scored " + percent + "%");
@@ -94,6 +124,10 @@ public class Game {
         }
     }
 
+    /**
+     * Lets the User end the program after asking for conformation. The input is checked against a map of different
+     * possible no/yes variants specified in Constants.YES_NO_MAP
+     */
     private static void endGame() {
         String answer;
         System.out.print("Are you sure you want to exit?(y/n): ");
