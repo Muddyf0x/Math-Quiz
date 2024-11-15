@@ -12,6 +12,7 @@ public class Game {
      * and chooses an operation type. Feedback is provided based on the player's performance.
      */
     public void start() {
+        System.out.println("Welcome to the Math Quiz Game!\n");
         while (true) {
             int difficulty = getDifficulty();
             if (difficulty == -1) {

@@ -37,7 +37,7 @@ public class Input {
      * @return A valid integer value provided by the user.
      */
     public static int getIntegerIn() {
-        return getInput(scan::nextInt, "Invalid integer. Please enter a valid number: ");
+        return getInput(scan::nextInt, "Invalid input. Please enter a valid number: ");
     }
 
     /**
@@ -47,7 +47,7 @@ public class Input {
      * @return A valid long value provided by the user.
      */
     public static long getLongIn() {
-        return getInput(scan::nextLong, "Invalid long. Please enter a valid number: ");
+        return getInput(scan::nextLong, "Invalid input. Please enter a valid number: ");
     }
 
     /**
