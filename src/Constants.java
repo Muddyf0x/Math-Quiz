@@ -19,6 +19,11 @@ public class Constants {
     public static final int CALCULATIONS_PER_GAME = 2;
 
     /**
+     * Defines how often the player will be asked for the answer before he gets the next question.
+     */
+    public static final int MAXIMUM_TRIES_PER_QUESTION = 3;
+
+    /**
      * Threshold percentage used for evaluation purposes.
      * Represents the minimum success rate to achieve a positive result.
      */
