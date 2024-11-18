@@ -93,7 +93,7 @@ public class Game {
             System.out.println("DEBUG: The result is: " + result);
         System.out.println("How much is " + a + " "+ Operations.OPERANDS[operator] + " " + b + "?");
 
-        do {
+        for (int i = 0; i < Constants.MAXIMUM_TRIES_PER_QUESTION; i++) {
             System.out.print("Enter your answer (-1 to exit): ");
             long userAnswer = Input.getLongIn();
 
@@ -106,8 +106,10 @@ public class Game {
 
                 correct = false;
             }
-        } while (true);
-
+        }
+        System.out.println("That's still wrong the correct answer is " + result + ".");
+        System.out.println("But don't worry you will get the next one.");
+        return correct;
     }
     /**
      * Provides feedback to the user based on the number of correct answers.
