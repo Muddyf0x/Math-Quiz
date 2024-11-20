@@ -42,7 +42,7 @@ public class Game {
         while (true) {
 
             int difficulty = Input.getIntegerIn();
-            if (difficulty == -1 || (difficulty >= 1 && difficulty <= 5)) {
+            if (difficulty == -1 || (difficulty >= 1 && difficulty <= Constants.DIFFICULTY_LEVELS)) {
                 return difficulty;
             }
             System.out.println("Number out of bounds!");
