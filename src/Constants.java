@@ -24,6 +24,11 @@ public class Constants {
     public static final int MAXIMUM_TRIES_PER_QUESTION = 3;
 
     /**
+     * Set the amount of difficulty levels (digits of the numbers)
+     * !Setting it above 5 is still Experimental!
+     */
+    public static final int DIFFICULTY_LEVELS = 5;
+    /**
      * Threshold percentage used for evaluation purposes.
      * Represents the minimum success rate to achieve a positive result.
      */
