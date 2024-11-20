@@ -11,7 +11,7 @@ public class Game {
      * Each loop iteration represents a complete game round, where the user sets the difficulty
      * and chooses an operation type. Feedback is provided based on the player's performance.
      */
-    public void start() {
+    public void play() {
         System.out.println("Welcome to the Math Quiz Game!\n");
         while (true) {
             int difficulty = getDifficulty();
