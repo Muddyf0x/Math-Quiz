@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Scanner;
 import java.util.function.Supplier;
 
@@ -56,7 +58,7 @@ public class Input {
      *
      * @return A lowercased, trimmed string provided by the user.
      */
-    public static String getLowerCaseString() {
+    public static @NotNull String getLowerCaseString() {
         String str = scan.next();
         return str.toLowerCase().strip();
     }

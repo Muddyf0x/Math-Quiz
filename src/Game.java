@@ -146,7 +146,8 @@ public class Game {
                     return; // If answer is a recognized "no" response
                 }
             } else {
-                System.out.println("Invalid input. Please enter 'y' for yes or 'n' for no.");
+                System.out.print("Invalid input. \n" +
+                        "Please enter 'y' for yes or 'n' for no: ");
             }
         } while (true);
     }
