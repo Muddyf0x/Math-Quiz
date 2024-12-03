@@ -86,7 +86,7 @@ public class Game {
             a = a - b;
         }
         Random random = new Random();
-        int operator = (operationType == 0) ? random.nextInt(Operations.OPERATION.length) + 1 : operationType - 1;
+        int operator = (operationType == 0) ? random.nextInt(Operations.OPERATION.length) : operationType - 1;
         long result = Operations.OPERATION[operator].apply(a, b);
 
         if (Constants.DEBUG)
