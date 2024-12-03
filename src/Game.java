@@ -11,7 +11,7 @@ public class Game {
      * Each loop iteration represents a complete game round, where the user sets the difficulty
      * and chooses an operation type. Feedback is provided based on the player's performance.
      */
-    public void start() {
+    public void play() {
         System.out.println("Welcome to the Math Quiz Game!\n");
         while (true) {
             int difficulty = getDifficulty();
@@ -42,7 +42,7 @@ public class Game {
         while (true) {
 
             int difficulty = Input.getIntegerIn();
-            if (difficulty == -1 || (difficulty >= 1 && difficulty <= 5)) {
+            if (difficulty == -1 || (difficulty >= 1 && difficulty <= Constants.DIFFICULTY_LEVELS)) {
                 return difficulty;
             }
             System.out.println("Number out of bounds!");
@@ -86,14 +86,14 @@ public class Game {
             a = a - b;
         }
         Random random = new Random();
-        int operator = (operationType == 0) ? random.nextInt(Operations.OPERATION.length) + 1 : operationType - 1;
+        int operator = (operationType == 0) ? random.nextInt(Operations.OPERATION.length) : operationType - 1;
         long result = Operations.OPERATION[operator].apply(a, b);
 
         if (Constants.DEBUG)
             System.out.println("DEBUG: The result is: " + result);
         System.out.println("How much is " + a + " "+ Operations.OPERANDS[operator] + " " + b + "?");
 
-        do {
+        for (int i = 0; i < Constants.MAXIMUM_TRIES_PER_QUESTION; i++) {
             System.out.print("Enter your answer (-1 to exit): ");
             long userAnswer = Input.getLongIn();
 
@@ -106,8 +106,10 @@ public class Game {
 
                 correct = false;
             }
-        } while (true);
-
+        }
+        System.out.println("That's still wrong the correct answer is " + result + ".");
+        System.out.println("But don't worry you will get the next one.");
+        return correct;
     }
     /**
      * Provides feedback to the user based on the number of correct answers.
@@ -144,7 +146,8 @@ public class Game {
                     return; // If answer is a recognized "no" response
                 }
             } else {
-                System.out.println("Invalid input. Please enter 'y' for yes or 'n' for no.");
+                System.out.print("Invalid input. \n" +
+                        "Please enter 'y' for yes or 'n' for no: ");
             }
         } while (true);
     }
