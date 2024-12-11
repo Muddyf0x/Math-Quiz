@@ -65,6 +65,7 @@ public class Game {
             int operationType = Input.getIntegerIn();
             if (operationType >= 0 && operationType < Operations.OPERATION_TEXT.length)
                 return operationType;
+            System.out.println("Number out of bounds!");
             System.out.print("Enter the operation (0-" + (Operations.OPERATION_TEXT.length - 1) + "): ");
         }
     }
