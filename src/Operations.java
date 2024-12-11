@@ -13,11 +13,13 @@ public class Operations {
     /// - Index 1: Subtraction
     /// - Index 2: Multiplication
     /// - Index 3: Integer Division (returns 0 if divisor is zero)
+    /// - Index 4: Modulo
     public static final BiFunction<Integer, Integer, Long>[] OPERATION = new BiFunction[] {
             (BiFunction<Integer, Integer, Long>) (a, b) -> (long) a + b,               // Addition at index 0
             (BiFunction<Integer, Integer, Long>) (a, b) -> (long) a - b,               // Subtraction at index 1
             (BiFunction<Integer, Integer, Long>) (a, b) -> (long) a * b,               // Multiplication at index 2
-            (BiFunction<Integer, Integer, Long>) (a, b) -> (long) (b != 0 ? a / b : 0) // Division at index 3, with divide-by-zero check
+            (BiFunction<Integer, Integer, Long>) (a, b) -> (long) (b != 0 ? a / b : 0), // Division at index 3, with divide-by-zero check
+            (BiFunction<Integer, Integer, Long>) (a, b) -> (long) a % b
     };
 
     /// Array of characters representing the arithmetic symbols for each operation.
@@ -26,11 +28,13 @@ public class Operations {
     /// - Index 1: '-'
     /// - Index 2: '*'
     /// - Index 3: '/'
+    /// - Index 4: '%'
     public static final Character[] OPERANDS = {
             '+',
             '-',
             '*',
             '/',
+            '%',
     };
 
     /// Array of descriptive strings for each operation type.
@@ -40,11 +44,13 @@ public class Operations {
     /// - Index 2: "2 = subtraction"
     /// - Index 3: "3 = multiplication"
     /// - Index 4: "4 = integer division"
+    /// - Index 5: "5 = modulo"
     public static final String[] OPERATION_TEXT = new String[]{
             "0 = Mixed operations",
             "1 = addition",
             "2 = subtraction",
             "3 = multiplication",
-            "4 = integer division"
+            "4 = integer division",
+            "5 = modulo"
     };
 }
